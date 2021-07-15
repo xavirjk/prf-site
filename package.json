@@ -1,6 +1,10 @@
 {
-  "name": "vet_health",
+  "name": "prf-site",
   "version": "1.0.0",
+   "engines": {
+    "npm":"6.4.1",
+    "node":"10.15.1"
+  },
   "description": "Customizable Portfolio",
   "main": "index.js",
   "directories": {
