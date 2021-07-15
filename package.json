@@ -1,7 +1,7 @@
 {
   "name": "vet_health",
   "version": "1.0.0",
-  "description": "Application to link farmer with health officer at their convinience",
+  "description": "Customizable Portfolio",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -10,8 +10,7 @@
     "test": "jest --verbose --runInBand"
   },
   "keywords": [
-    "Vet",
-    "Health"
+    "Portfolio"
   ],
   "jest": {
     "testEnvironment": "node",
@@ -19,7 +18,7 @@
       "/node_modules"
     ]
   },
-  "author": "Samuel Maina and John Kahuha",
+  "author": "John Kahuha",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
