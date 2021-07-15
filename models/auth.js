@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-//var url = 'mongodb://localhost:27017/prftst';
-//const options = require('./options');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;

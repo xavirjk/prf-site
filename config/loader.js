@@ -7,8 +7,4 @@ module.exports = (app) => {
   app.use('/update', client);
   app.use('/user', client);
   app.use('/ref', ct);
-  app.use('/', (req, res, next) => {
-    console.log('Home');
-    res.status(200).send('Welcome');
-  });
 };
