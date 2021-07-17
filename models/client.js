@@ -22,7 +22,7 @@ const clientSchema = new Schema({
   resume: {
     type: String,
     required: false,
-    default: 'Data\\docs\\magdaline C.V-56289g52w22.pd',
+    default: 'Data\\docs\\magdaline C.V-56289g52w22.pdf',
   },
   Bio: {
     type: String,
@@ -38,6 +38,11 @@ const clientSchema = new Schema({
     type: ObjectId,
     required: true,
     ref: 'Links',
+  },
+  contacts_id: {
+    type: ObjectId,
+    required: true,
+    ref: 'contacts',
   },
   p_id: {
     type: Number,

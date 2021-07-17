@@ -1,5 +1,5 @@
 const { signin } = require('../context/config');
-const { Client, handles } = require('../models');
+const { Client, handles, contacts } = require('../models');
 exports.postLinks = async (req, res, next) => {
   const { body, user } = req;
 
@@ -12,6 +12,16 @@ exports.postLinks = async (req, res, next) => {
   res.status(200).send({ message: 'Links updated Successfully' });
 };
 
+exports.postContacts = async (req, res, next) => {
+  const { body, user } = req;
+  const contDet = await contacts.findByClient_id(user.id);
+  if (!contDet) {
+    res.status(404).send({ message: 'Setup profile' });
+    return null;
+  }
+  await contDet.editContacts(body);
+  res.status(200).send({ message: 'Contacts Updated Successfully' });
+};
 exports.postdescription = async (req, res, next) => {
   const { body, user } = req;
 
@@ -31,7 +41,9 @@ exports.postProfile = async (req, res, next) => {
   console.log('det', details);
   if (!details) {
     const Links = await handles.addDetails({ id: user.id });
+    const contDet = await contacts.createEntry({ id: user.id });
     body.links_id = Links.id;
+    body.contacts_id = contDet.id;
     body.p_id = 0;
     await Client.addDetails(body);
     res.status(200).send({ message: 'profile setup success' });
@@ -65,29 +77,6 @@ exports.postPid = async (req, res, next) => {
   return signin({ id: details.id }, cb, { expiresIn: 3600 });
 };
 
-exports.getAbout = async (req, res, next) => {
-  const { body, user } = req;
-  const details = await Client.findById(user.id);
-  if (!details) {
-    res.status(200).send({ message: null });
-    return null;
-  } else {
-    res.status(200).send({ message: 'success', data: details.About });
-  }
-};
-exports.getBio = async (req, res, next) => {
-  const { body, user } = req;
-
-  const details = await Client.findById(user.id);
-
-  if (!details) {
-    res.status(200).send({ message: null });
-    return null;
-  } else {
-    res.status(200).send({ message: 'success', data: details.Bio });
-  }
-};
-
 exports.getClient = async (req, res, next) => {
   const { body, user } = req;
   const details = await Client.findById(user.id);
@@ -97,6 +86,7 @@ exports.getClient = async (req, res, next) => {
     return null;
   } else {
     const links = await handles.findById(details.links_id);
+    const contDet = await contacts.findById(details.contacts_id);
     const data = {
       fullname: details.fullname,
       links: links,
@@ -104,6 +94,7 @@ exports.getClient = async (req, res, next) => {
       Bio: details.Bio,
       profile: details.profile,
       resume: details.resume,
+      contacts: contDet,
     };
     res.status(200).send({ message: 'success', data: data });
   }
