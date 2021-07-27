@@ -1,6 +1,5 @@
 const { Auth } = require('../models');
 const { signin } = require('../context/config');
-//const { SESSION_SECRET } = require('../context/env');
 exports.postLogin = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -25,11 +24,3 @@ exports.postLogin = async (req, res, next) => {
   };
   return signin({ id: user.id }, cb, { expiresIn: 3600 });
 };
-
-/**const signin = (payload, cb) => {
-  const config = {
-    expiresIn: 3600,
-  };
-  jwt.sign(payload, SESSION_SECRET, config, cb);
-};
-*/

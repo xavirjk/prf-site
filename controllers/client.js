@@ -38,7 +38,6 @@ exports.postProfile = async (req, res, next) => {
   const { body, user } = req;
   body.id = user.id;
   const details = await Client.findByClient_id(user.id);
-  console.log('det', details);
   if (!details) {
     const Links = await handles.addDetails({ id: user.id });
     const contDet = await contacts.createEntry({ id: user.id });
@@ -55,7 +54,6 @@ exports.postProfile = async (req, res, next) => {
 
 exports.postPid = async (req, res, next) => {
   const { body } = req;
-  console.log('body', body);
   const details = await Client.findOne(body);
   if (!details) {
     res.status(200).send({ message: 'not available' });
