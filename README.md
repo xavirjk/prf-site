@@ -1,5 +1,7 @@
 ### Steps to follow
 
+A client view production build exists at the Project Root directory or else follow following steps to make your own build
+
 1.  First clone the Repo at https://github.com/xavirjk/prf-client
 2.  Build the app for Deployment
 
@@ -23,4 +25,4 @@ specify environment variables in a .env file
 ### Running the application
 
 Run the entry file ["index.js"]
-The app can be viewed at https://github.com/xavirjk/prf-client
+The app can be viewed at https://p-flio.herokuapp.com
