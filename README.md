@@ -7,11 +7,11 @@ A client view production build exists at the Project Root directory or else foll
 
 ### production Build Location
 
-1.  The contents of the build can be placed at the project root directorate ["PRF-SITE"]
+1.  The contents of the `build` can be placed at the project root directorate `prf-site`
 
 ### Dependencies
 
-install the project dependencies ["package.json"] run npm install
+install the project dependencies `package.json` run npm install
 
 ### variables
 
@@ -24,5 +24,5 @@ specify environment variables in a .env file
 
 ### Running the application
 
-Run the entry file ["index.js"]
+Run the entry file `index.js`
 The app can be viewed at https://p-flio.herokuapp.com
